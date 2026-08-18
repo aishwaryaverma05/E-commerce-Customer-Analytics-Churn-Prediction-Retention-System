@@ -76,6 +76,9 @@ Key focus areas include:
 * Overall customer behavior
 * High-level performance indicators
 
+  <img width="1907" height="900" alt="image" src="https://github.com/user-attachments/assets/9e93007d-dd2b-4352-922a-f99a37178e60" />
+
+
 ---
 
 ### 2. 👥 Customer Analytics
@@ -91,6 +94,8 @@ Key analysis includes:
 * Customer-level analytics
 
 The goal is to understand **who the customers are and how they behave**.
+<img width="1888" height="832" alt="image" src="https://github.com/user-attachments/assets/2e88314b-7375-47cb-a918-9ddae4a5ec73" />
+
 
 ---
 
@@ -108,6 +113,9 @@ The workflow includes:
 * Prediction-driven customer analysis
 
 The objective is not only to identify churn, but to help businesses **prioritize customers who may require retention attention**.
+
+<img width="1267" height="857" alt="image" src="https://github.com/user-attachments/assets/2bd1179c-5cb5-47a5-a89f-759f708a965e" />
+
 
 ---
 
@@ -140,6 +148,8 @@ Users can investigate patterns through:
 * Behavioral insights
 
 The purpose is to allow users to explore the data rather than relying only on static reports.
+<img width="1152" height="837" alt="image" src="https://github.com/user-attachments/assets/9a6d648f-5524-4c7f-a024-fab1dd4c6569" />
+
 
 ---
 
