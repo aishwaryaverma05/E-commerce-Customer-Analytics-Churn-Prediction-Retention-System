@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+from pathlib import Path
+
 
 # =========================================================
 # PAGE CONFIG
@@ -12,6 +14,15 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+
+# =========================================================
+# PATHS
+# =========================================================
+
+BASE_DIR = Path(__file__).resolve().parent
+SQL_FILE = BASE_DIR / "sql" / "customer_analysis.sql"
+
 
 # =========================================================
 # DARK THEME
@@ -75,7 +86,7 @@ p, li {
     color: #cbd5e1;
 }
 
-/* Metric cards */
+/* Metric Cards */
 
 div[data-testid="stMetric"] {
     background-color: #111827 !important;
@@ -129,6 +140,8 @@ div[data-baseweb="select"] > div {
 div[data-testid="stAlert"] {
     border-radius: 12px;
 }
+
+/* Footer */
 
 .footer {
     text-align: center;
@@ -571,7 +584,7 @@ elif page == "High-Risk Customers":
 
 
 # =========================================================
-# JULIUS / ANALYTICS DASHBOARD
+# JULIUS ANALYTICS DASHBOARD
 # =========================================================
 
 elif page == "Power BI Dashboard":
@@ -599,19 +612,50 @@ elif page == "SQL Analysis":
 
     st.title("🗄️ SQL Analysis")
 
-    st.write(
-        "SQL was used as the analytical layer for customer, "
-        "sales, segmentation and retention analysis."
+    st.markdown(
+        "SQL was used as the analytical layer for revenue, "
+        "customer behaviour, RFM segmentation, retention and churn analysis."
     )
 
-    queries = pd.DataFrame({
+    # -----------------------------------------------------
+    # SQL KPIs
+    # -----------------------------------------------------
+
+    c1, c2, c3 = st.columns(3)
+
+    with c1:
+        st.metric("SQL Queries", "59")
+
+    with c2:
+        st.metric("Analysis Areas", "6")
+
+    with c3:
+        st.metric("SQL Status", "Completed")
+
+    st.divider()
+
+    # -----------------------------------------------------
+    # SQL ANALYSIS AREAS
+    # -----------------------------------------------------
+
+    st.markdown("## 📌 SQL Analysis Areas")
+
+    sql_areas = pd.DataFrame({
         "Analysis": [
             "Revenue Analysis",
-            "Customer Purchase Analysis",
-            "RFM Analysis",
-            "Customer Segmentation",
+            "Customer Analysis",
+            "RFM Segmentation",
             "Retention Analysis",
-            "Churn Analysis"
+            "Churn Analysis",
+            "Customer Behaviour"
+        ],
+        "Purpose": [
+            "Analyse overall sales and revenue performance",
+            "Understand customer purchasing behaviour",
+            "Segment customers using RFM methodology",
+            "Measure customer retention patterns",
+            "Identify churn-related customer groups",
+            "Analyse frequency, monetary value and purchases"
         ],
         "Status": [
             "Completed",
@@ -624,13 +668,53 @@ elif page == "SQL Analysis":
     })
 
     st.dataframe(
-        queries,
+        sql_areas,
         use_container_width=True,
         hide_index=True
     )
 
+    st.divider()
+
+    # -----------------------------------------------------
+    # ACTUAL SQL FILE
+    # -----------------------------------------------------
+
+    st.markdown("## 💻 SQL Query File")
+
+    if SQL_FILE.exists():
+
+        try:
+
+            sql_code = SQL_FILE.read_text(
+                encoding="utf-8"
+            )
+
+            st.code(
+                sql_code,
+                language="sql"
+            )
+
+        except Exception as e:
+
+            st.error(
+                f"Unable to read SQL file: {e}"
+            )
+
+    else:
+
+        st.error(
+            "SQL file not found."
+        )
+
+        st.caption(
+            f"Expected location: {SQL_FILE}"
+        )
+
+    st.divider()
+
     st.success(
-        "SQL analysis is integrated into the overall customer analytics workflow."
+        "SQL analysis is integrated into the overall "
+        "customer analytics workflow."
     )
 
 
