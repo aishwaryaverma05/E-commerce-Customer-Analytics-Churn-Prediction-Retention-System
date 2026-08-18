@@ -6,7 +6,7 @@ The project combines **data cleaning, exploratory data analysis, SQL analytics, 
 
 <p align="center">
   <a href="https://e-commerce-customer-analytics-churn-prediction-retention-syste.streamlit.app/">
-    <strong>🚀 Live Interactive Dashboard</strong>
+    <strong> Live Interactive Dashboard</strong>
   </a>
 </p>
 
